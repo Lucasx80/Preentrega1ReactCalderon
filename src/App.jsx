@@ -1,33 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js' 
-
-
-
+import ItemListContainer from './Components/ItemListContainer'
+import NavBar from './Components/NavBar'
+import ItemDetailContainer from './Components/ItemDetailContainer'
+import Error404 from './Components/Error404'
 
 function App() {
   
 
   return (
-
-    <div>
-      <Usuario />
-    </div>
-  );
-      
-
-      <div class="alert alert-primary" role="alert">
-        <h5> Carrito  </h5>
-      </div>
-
+    <BrowserRouter>
+    <NavBar/>
+    <Routes>
+    <Route exact path={"/"} element={<ItemListContainer greeting="Bienvenido a DigiMart" />}/>
+    <Route exact path={"/category/:id"} element={<ItemListContainer/>}/>
+    <Route exact path={"/item/:id"} element={<ItemDetailContainer/>}/>
+    <Route exact path={"*"} element={<Error404/>}/>
+    </Routes>
+    </BrowserRouter>
+  
 
     
-  
+    
+  )
 }
-
-
 
 export default App
